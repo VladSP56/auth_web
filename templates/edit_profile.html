@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редактирование профиля</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="text-center">Редактирование профиля</h1>
+
+    <form method="POST" class="mt-4">
+        <div class="form-group">
+            <label for="name">Имя</label>
+            <input type="text" class="form-control" id="name" name="name" value="{{ user_data['name'] }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Электронная почта</label>
+            <input type="email" class="form-control" id="email" name="email" value="{{ user_data['email'] }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Пароль</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+    </form>
+
+    {% if user_data['password'] %}
+    <div class="mt-5">
+        <h2>Данные успешно обновлены!</h2>
+        <ul class="list-group">
+            <li class="list-group-item"><strong>Имя:</strong> {{ user_data['name'] }}</li>
+            <li class="list-group-item"><strong>Электронная почта:</strong> {{ user_data['email'] }}</li>
+        </ul>
+    </div>
+    {% endif %}
+</div>
+</body>
+</html>
